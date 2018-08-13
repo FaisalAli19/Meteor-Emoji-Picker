@@ -23,7 +23,11 @@ class MeteorEmoji {
       else {
           var caretPos = emojiInput.selectionStart;
           if (caretPos != null) {
-              emojiInput.value = emojiInput.value.substring(0, caretPos) + " " + event.target.innerHTML + emojiInput.value.substring(caretPos);
+							emojiInput.value = emojiInput.value.substring(0, caretPos) + " " + event.target.innerHTML + emojiInput.value.substring(caretPos);
+							// focus back on text field
+							emojiInput.focus()
+							// As focus change the cursor position to end. Move cursor back to its original postion after emoji
+							emojiInput.selectionStart = caretPos + 3
           }
           else { // is probably contentEditable or something else
               $(emojiInput).append(event.target.innerHTML);
